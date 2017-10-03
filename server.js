@@ -25,6 +25,9 @@ app.use(bodyParser.urlencoded({
 }));
 // Make public a static dir
 app.use(express.static("public"));
+
+
+
 //Mongoose action below//
 //Database configuration here
 

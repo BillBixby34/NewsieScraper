@@ -12,7 +12,7 @@ request("http://www.cnn.com/health", function(error, response, html) {
 const $ = cheerio.load(html);
 //An empty array to save the data we'll scrape
 const results =[];
-//Within cheerio "API", find each (loop) article class of 'cd'
+//Within cheerio "API", find each(loop) h3 class of 'cd'
 $('h3.cd__headline').each(function(i, element) {
 	//save the text of the element in a "title" variable
 	let title = $(element).text();
