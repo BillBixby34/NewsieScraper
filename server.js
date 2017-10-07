@@ -33,7 +33,6 @@ app.use(express.static("public"));
 
 //Mongoose action below//
 //Database configuration here
-//ASK
 mongoose.connect("mongodb://localhost/scrapeB");
 var db = mongoose.connection;
 //Show any mongoose errors here
@@ -49,13 +48,13 @@ db.once("open", function() {
 //Routes
 //======
 
-// A GET request to scrape the echojs website
+// A GET request to scrape the website
 app.get("/scrape", function(req, res) {
   // First, we grab the body of the html with request
   request("http://www.cnn.com/health", function(error, response, html) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     const $ = cheerio.load(html);
-    // Now, we grab every h3 within an article tag, and do the following:
+    // Now, we grab every h3 with class cd__headline, and do the following:
     $('h3.cd__headline').each(function(i, element) {
 
       // Save an empty result object

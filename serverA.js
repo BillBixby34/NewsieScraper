@@ -5,7 +5,6 @@ const mongojs = require("mongojs");
 const cheerio = require('cheerio');
 //makes http request for html page
 const request = require('request');
-
 //Initialize Express
 const app = express();
 
@@ -55,6 +54,8 @@ $('h3.cd__headline').each(function(i, element) {
 	//in the selected element, look at child elements, 
 	//then save the values for any "href" attr. of the child element
 	let link = $(this).children("a").attr("href");
+	//save an empty result object
+	const result = {};
 	//save results in an object and push into results array
 
 	if (title && link) {
