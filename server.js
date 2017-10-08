@@ -47,6 +47,7 @@ db.once("open", function() {
 
 //Routes
 //======
+//Scrape Article Routes
 
 // A GET request to scrape the website
 app.get("/scrape", function(req, res) {
@@ -87,6 +88,29 @@ app.get("/scrape", function(req, res) {
   // Tell the browser that we finished scraping the text
   res.send("Scrape Complete");
 });
+// Find all articles marked as saved
+app.get("/saved", function(req, res) {
+  // Go into the mongo collection, and find all docs where "read" is true
+  db.articles.find({ "saved": true }, function(error, found) {
+    // Show any errors
+    if (error) {
+      console.log(error);
+    }
+    // Otherwise, send the articles we found to the browser as a json
+    else {
+      res.json(found);
+    }
+  });
+});
+//Note Routes
+
+
+/* OUR CUSTOM METHODS
+ * (methods created in the userModel.js)
+ * -/-/-/-/-/-/-/-/-/ */
+
+
+
 
 // Listen on port 3000
 app.listen(3000, function() {

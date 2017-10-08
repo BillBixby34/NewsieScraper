@@ -9,22 +9,25 @@ let ArticleSchema = new Schema({
 	//title is a required string
 	title: {
 		type: String,
-		required: true
+		unique: true
 	},
 	//link is a required string
 	link: {
 		type: String,
 		required: true
-	}
-	//saved: {
-		//type: Boolean,
-		//default: false
-	//}
-	// This only saves one note's ObjectId, ref refers to the Note model
-  // note: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: "Note"
-  // }
+	},
+	saved: {
+		type: Boolean,
+		default: false
+	},
+	// notes is an array that stores ObjectIds
+  // The ref property links these ObjectIds to the Note model
+  // This will let us populate the saved Articles with these notes, rather than the ids,
+  // using Mongoose's populate method (See the routes in Server.js)
+   note: [{
+    type: Schema.Types.ObjectId,
+     ref: "Note"
+   }]
 });
 
 //Create the Article model with the ArticleSchema
