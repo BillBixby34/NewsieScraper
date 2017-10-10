@@ -7,11 +7,21 @@ const Schema = mongoose.Schema;
 const NoteSchema = new Schema({
   // Just a string
   title: {
-    type: String
+    type: String,
+    unique: true,
   },
   // Just a string
   body: {
-    type: String
+    type: String,
+    validate: [
+      // Function takes in the value as an argument
+      function(input) {
+        // If this returns true, proceed. If not, return an error message
+        return input.length >= 1;
+      },
+      // Error Message
+      "Any note should be longer."
+    ]
   }
 });
 

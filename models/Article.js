@@ -29,9 +29,18 @@ let ArticleSchema = new Schema({
      ref: "Note"
    }]
 });
+//custom methods
+
+// Custom method saveArticle
+ArticleSchema.methods.saveArticle = function() {
+  // Make the "isCool" property of the current doc equal to the boolean "true"
+  this.saved = true;
+  // Return the new boolean value
+  return this.saved;
+};
 
 //Create the Article model with the ArticleSchema
-let Article = mongoose.model("Article", ArticleSchema);
+const Article = mongoose.model("Article", ArticleSchema);
 //export the model
 console.log("Could be the same " + Article)
  module.exports = Article;
