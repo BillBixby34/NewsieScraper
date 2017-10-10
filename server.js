@@ -8,7 +8,7 @@ const mongoose = require("mongoose");
 // Requiring our Note and Article models
 const Note = require("./models/Note.js");
 const Article = require("./models/Article.js");
-debugger;
+//debugger;
 console.log("Check for " + Article);
 // Require request and cheerio. This makes the scraping possible
 // Our scraping tools
