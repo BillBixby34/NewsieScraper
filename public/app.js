@@ -6,3 +6,6 @@ $.getJSON("/articles", function(data) {
     $("#articles").append("<div class=headline-news>" + "<h2 class=head-title>" + data[i].title + "</h2>" + "<h3 class=head-link>" + data[i].link + "</h3>" + "</div>");
 }
 });
+
+//Add onClick functions for saving articles,
+//deleting articles, adding notes, deleting notes

@@ -33,7 +33,7 @@ let ArticleSchema = new Schema({
 
 // Custom method saveArticle
 ArticleSchema.methods.saveArticle = function() {
-  // Make the "isCool" property of the current doc equal to the boolean "true"
+  // Make the "saved" property of the current doc equal to the boolean "true"
   this.saved = true;
   // Return the new boolean value
   return this.saved;

@@ -68,7 +68,7 @@ app.get("/scrape", function(req, res) {
       // Using our Article model, create a new entry
       // This effectively passes the result object to the entry (and the title and link)
       
-      const entry = new Article(result);
+      let entry = new Article(result);
 
 
       // Now, save that entry to the db
@@ -82,12 +82,14 @@ app.get("/scrape", function(req, res) {
           console.log("The doc says " + doc);
         }
       });
-
+      // res.redirec("/");
+      //error res.redirect is not a function
     });
   });
   // Tell the browser that we finished scraping the text
   res.send("Scrape Complete");
 });
+
 // This will get the articles we scraped from the mongoDB
 app.get("/articles", function(req, res) {
   // Grab every doc in the Articles array
@@ -99,13 +101,16 @@ app.get("/articles", function(req, res) {
     // Or send the doc to the browser as a json object
     else {
       res.json(doc);
+      
     }
   });
+
 });
+
 // Find all articles marked as saved
 app.get("/saved", function(req, res) {
   // Go into the mongo collection, and find all docs where "saved" is true
-  db.articles.find({ "saved": true }, function(error, found) {
+  Article.find({ "saved": true }, function(error, found) {
     // Show any errors
     if (error) {
       console.log(error);
@@ -161,9 +166,14 @@ app.post("/articles/:id", function(req, res) {
     });
 });
 /* OUR CUSTOM METHODS
- * (methods created in the userModel.js)
+ * (methods created in the articleModel.js)
  * -/-/-/-/-/-/-/-/-/ */
+//method to save article
+// entry.saveArticle();
+//method to delete saved article
 
+//method to delete note
+//method to save note
 
 
 
